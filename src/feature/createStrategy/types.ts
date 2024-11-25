@@ -32,13 +32,18 @@ export interface TaskStrategy {
   task: string
   duration: string
   idea: string[]
+  status: StatusStrategy
+}
+
+export interface StatusStrategy{
+  status: StatusProgressStrategy
 }
 
 interface WeekSchedule {
   [key: string]: TaskStrategy[]
 }
 
-interface ScheduleStrategy {
+export interface ScheduleStrategy {
   [key: string]: WeekSchedule
 }
 

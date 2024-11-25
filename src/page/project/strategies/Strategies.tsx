@@ -6,7 +6,7 @@ interface PropStrategies {}
 
 export default function Strategies({}: PropStrategies) {
   return (
-    <div>
+    <div className={css.strategies} >
       <nav className="navbar bg-base-100">
         <div className="flex-1 menu menu-sm menu-horizontal dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow flex gap-2 items-center">
           <NavLink

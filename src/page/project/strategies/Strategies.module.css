@@ -1,5 +1,6 @@
 .nav {
   display: flex;
-  gap: .5rem;
-  padding-block: .5rem;
+  gap: 0.5rem;
+  padding-block: 0.5rem;
 }
+
