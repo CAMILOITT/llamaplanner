@@ -8,13 +8,22 @@ export default function SummaryStrategies({}: PropSummaryStrategies) {
 
   return (
     <div>
-      <div className="card">
-        <h2 className="text-2xl font-bold my-4">{strategy.name}</h2>
-        <p>{strategy.main_objective}</p>
+      <div className="flex justify-between">
+        <div className="card bg-base-100 w-96 shadow-xl flex flex-col items-center m-8">
+          <h2 className="text-2xl font-bold my-4">{strategy.name}</h2>
+          <p>{strategy.main_objective}</p>
+        </div>
+        <div className="card bg-base-100 w-96 shadow-xl flex flex-col items-center m-8 ">
+          <p>{strategy.status}</p>
+          <p>{strategy.progress}%</p>
+        </div>
       </div>
+
       <div>
-        <p>{strategy.status}</p>
-        <p>{strategy.progress}%</p>
+        <div className="card bg-base-100 w-96 shadow-xl flex flex-col items-center m-8 w-full">
+          <h2 className="text-2xl font-bold my-4">Estrategia</h2>
+          {/* <p>{strategy.idea[0]}</p> */}
+        </div>
       </div>
 
       <table className="table table-pin-rows table-pin-cols">
