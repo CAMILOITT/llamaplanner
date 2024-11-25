@@ -60,16 +60,6 @@ export default function Configuration({}: PropConfiguration) {
           guardar
         </button>
       </form>
-      {/* <div>
-        Información básica del proyecto: Editar el nombre del proyecto. Cambiar
-        la ubicación o sector/industria. Modificar la descripción breve. Gestión
-        del equipo (si aplica): Invitar colaboradores al proyecto. Asignar roles
-        (e.g., "Propietario", "Editor"). Parámetros estratégicos avanzados
-        (opcional): Ajustar el presupuesto total (para reportes). Configurar
-        plazos generales para estrategias y objetivos. Exportaciones y
-        privacidad: Permitir exportar todos los datos del proyecto (e.g., PDF,
-        JSON). Opción para eliminar el proyecto o desactivar temporalmente.
-      </div> */}
     </div>
   )
 }

@@ -19,7 +19,7 @@ export async function saveStrategy(
   const user = auth.currentUser
   if (!user) return
 
-  const strategiesRef = collection(
+  const strategiesRef = await collection(
     db,
     "users",
     user?.uid,
@@ -27,8 +27,8 @@ export async function saveStrategy(
     projectId,
     "strategies",
   )
-  addDoc(strategiesRef, strategyData)
-  console.log("Estrategia guardada para el proyecto")
+  const doc = await addDoc(strategiesRef, strategyData)
+  return doc
 }
 
 export async function eliminateStrategy(strategyId: string, projectId: string) {

@@ -6,7 +6,7 @@ interface PropStrategies {}
 
 export default function Strategies({}: PropStrategies) {
   return (
-    <div className={css.strategies} >
+    <div className={css.strategies}>
       <nav className="navbar bg-base-100">
         <div className="flex-1 menu menu-sm menu-horizontal dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow flex gap-2 items-center">
           <NavLink
@@ -19,18 +19,13 @@ export default function Strategies({}: PropStrategies) {
             to={"/project/strategies/summary"}>
             resumen
           </NavLink>
-          <NavLink
-            className="btn btn-primary btn-nav-sm"
-            to={"/project/strategies/reports"}>
-            reportes
-          </NavLink>
         </div>
         <div className="flex-none">
           <button
             className="btn btn-secondary btm-nav-sm"
             onClick={() =>
               (
-                document.getElementById("my_modal_3") as HTMLDialogElement
+                document.getElementById("create_project") as HTMLDialogElement
               )?.showModal()
             }>
             nueva estrategia

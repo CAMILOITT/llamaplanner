@@ -1,31 +1,21 @@
+import { useAllStrategyStore } from "@/context/allStrategy"
 import { useProjectStore } from "@/context/project"
 import { useStrategyStore } from "@/context/strategy"
 import { Strategy } from "@/feature/createStrategy/types"
-import {
-  eliminateStrategy,
-  getAllStrategies,
-} from "@/services/firebase/db/strategy"
-import { useEffect, useState } from "react"
+import { eliminateStrategy } from "@/services/firebase/db/strategy"
 import { useNavigate } from "react-router"
 
 interface PropAllStrategies {}
 
 export default function AllStrategies({}: PropAllStrategies) {
-  const [listStrategies, setListStrategies] = useState<Strategy[]>([])
   const project = useProjectStore(store => store.project)
   const updateStrategy = useStrategyStore(store => store.updateStrategy)
   const navigate = useNavigate()
-  useEffect(() => {
-    getAllStrategies(project.id ?? "")
-      .then(response => {
-        setListStrategies(response)
-      })
-      .catch(e => console.error(e.message))
-  }, [])
+  const listStrategies = useAllStrategyStore(store => store.listStrategy)
+  const removeStrategyList = useAllStrategyStore(store => store.removeStrategy)
 
   function removeStrategy(id: string) {
-    const newList = listStrategies.filter(strategy => strategy.id !== id)
-    setListStrategies(newList)
+    removeStrategyList(id)
     eliminateStrategy(id, project.id ?? "")
       .then(() => {
         console.log("Estrategia eliminada")
@@ -63,7 +53,11 @@ export default function AllStrategies({}: PropAllStrategies) {
               {listStrategies.map((strategy, i) => (
                 <tr
                   key={strategy.id}
-                  onClick={() => getMoreInformation(strategy)}
+                  onClick={e => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    getMoreInformation(strategy)
+                  }}
                   className="hover cursor-pointer ">
                   <th>{i}</th>
                   <td>{strategy.name}</td>
@@ -73,7 +67,11 @@ export default function AllStrategies({}: PropAllStrategies) {
                   <td className="flex gap-2">
                     <button
                       className="btn btn-error btn-sm"
-                      onClick={() => removeStrategy(strategy.id ?? "")}>
+                      onClick={e => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        removeStrategy(strategy.id ?? "")
+                      }}>
                       eliminar
                     </button>
                   </td>
