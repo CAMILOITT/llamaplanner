@@ -1,41 +1,41 @@
-import InputText from '@/components/ui/InputText';
-import { saveUserProject } from '@/services/firebase/db/project';
-import { useNavigate } from 'react-router';
-import css from './CreateProject.module.css';
-import { Project } from './types';
-import { useProjectStore } from '@/context/project';
+import InputText from "@/components/ui/InputText"
+import { useProjectStore } from "@/context/project"
+import { saveUserProject } from "@/services/firebase/db/project"
+import { useNavigate } from "react-router"
+import css from "./CreateProject.module.css"
+import { Project } from "./types"
 
 interface PropCreateProject {}
 
 export default function CreateProject({}: PropCreateProject) {
-  const updateProject = useProjectStore((store) => store.updateProject);
-  const navigate = useNavigate();
+  const updateProject = useProjectStore(store => store.updateProject)
+  const navigate = useNavigate()
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
 
     const data: Project = {
-      nameEnterprise: formData.get('nameEnterprise') as string,
-      description: formData.get('description') as string,
-      sectorIndustry: formData.get('sectorIndustry') as string,
-      location: formData.get('location') as string,
-      descriptionBrief: formData.get('descriptionBrief') as string,
-      values: formData.get('values') as string,
-      productsServices: formData.get('productsServices') as string,
-      competitors: (formData.get('competitors') as string).split(','),
-      missionVisionBrief: formData.get('missionVisionBrief') as string,
-    };
+      nameEnterprise: formData.get("nameEnterprise") as string,
+      description: formData.get("description") as string,
+      sectorIndustry: formData.get("sectorIndustry") as string,
+      location: formData.get("location") as string,
+      descriptionBrief: formData.get("descriptionBrief") as string,
+      values: formData.get("values") as string,
+      productsServices: formData.get("productsServices") as string,
+      competitors: (formData.get("competitors") as string).split(","),
+      missionVisionBrief: formData.get("missionVisionBrief") as string,
+    }
 
     try {
-      const doc = await saveUserProject(data);
+      const doc = await saveUserProject(data)
       if (!doc) {
-        throw new Error('no se puedo crear el proyecto intentalo mas tarde')
+        throw new Error("no se puedo crear el proyecto intentalo mas tarde")
       }
-      updateProject(doc);
-      navigate('/project');
+      updateProject(data)
+      navigate("/project")
     } catch (error) {
-      const e = (error as Error).message;
+      const e = (error as Error).message
       alert(e)
     }
   }
@@ -76,5 +76,5 @@ export default function CreateProject({}: PropCreateProject) {
         enviar
       </button>
     </form>
-  );
+  )
 }

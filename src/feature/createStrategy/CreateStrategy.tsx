@@ -1,7 +1,7 @@
 import InputText from "@/components/ui/InputText"
 import { useAllStrategyStore } from "@/context/allStrategy"
 import { useProjectStore } from "@/context/project"
-import { saveStrategy } from "@/services/firebase/db/strategy"
+import { getAllStrategies, saveStrategy } from "@/services/firebase/db/strategy"
 import { useLocation, useNavigate } from "react-router"
 import { exampleData1, exampleData2, expectedFormat } from "./const"
 import { StatusProgressStrategy } from "./types"
@@ -12,7 +12,7 @@ interface PropCreateStrategy {}
 export default function CreateStrategy({}: PropCreateStrategy) {
   const navigator = useNavigate()
   const project = useProjectStore(store => store.project)
-  const adaddStrategyd = useAllStrategyStore(store => store.addStrategy)
+  const setStrategy = useAllStrategyStore(store => store.setStrategies)
   const location = useLocation()
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
@@ -117,6 +117,12 @@ Devuelve exclusivamente el JSON en este formato.
     ;(document.getElementById("create_project") as HTMLDialogElement)?.close()
     if (location.pathname !== "/project/strategies")
       navigator("/project/strategies")
+
+    getAllStrategies(project.id ?? "")
+      .then(response => {
+        setStrategy(response)
+      })
+      .catch(e => alert(e.message))
   }
 
   return (
