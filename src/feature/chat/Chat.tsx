@@ -1,6 +1,6 @@
 import InputText from "@/components/ui/InputText"
 import { useStrategyStore } from "@/context/strategy"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
@@ -17,6 +17,10 @@ export default function Chat({ description }: PropChat) {
   >([])
   const [valueMessage, setValueMessage] = useState("")
   const strategy = useStrategyStore(store => store.strategy)
+
+  useEffect(() => {
+    setListMessages([])
+  }, [description])
 
   async function submitLlama(e: React.FormEvent<HTMLButtonElement>) {
     e.preventDefault()
@@ -109,6 +113,7 @@ Genera información amplia, útil y alineada con los objetivos de la estrategia.
           name="message"
           placeholder="chatea tus preguntas"
           value={valueMessage}
+          defaultValue={valueMessage}
           onChange={e => setValueMessage(e.target.value)}
         />
         <button className="btn btn-primary btn-md" onClick={submitLlama}>
