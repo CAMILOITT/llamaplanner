@@ -1,0 +1,5 @@
+.nav {
+  display: flex;
+  gap: .5rem;
+  padding-block: .5rem;
+}

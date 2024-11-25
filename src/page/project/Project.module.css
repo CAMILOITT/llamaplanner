@@ -1,0 +1,17 @@
+.main{
+  display: flex;
+  max-width: 100vw;
+  gap: 1rem;
+}
+
+.body{
+  width: 100%;
+  padding: 2rem 3rem;
+}
+
+.aside{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: 1rem .5rem;
+}

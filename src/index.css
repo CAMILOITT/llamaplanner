@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @import url("https: //fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"); */
+
+:root {
+  --border-s: 6px;
+  --border-m: 8px;
+  --border-l: 12px;
+  --border-xl: 16px;
+
+  --color-bg: #0d0d0d;
+  --color-primary: #5600a8;
+  --color-secondary: #8918f4;
+  --color-tertiary: #8918f4;
+
+  --fonts: ;
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: var(--fonts), sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 15px
+}
+
+::-webkit-crollbar-track {
+  background: ;
+}
+
+::-webkit-scrollbar-thumb {
+
+}
+ 
+::-webkit-scrollbar-thumb:hover {
+
+}
+
+button,
+input {
+  font-size: unset;
+  border-radius: var(--border-s);
+  /* padding: 4px 6px; */
+  padding: 8px 16px;
+}
+
+button,
+input,
+dialog {
+  outline: none;
+  border: none;
+}
+
+body {
+  /* background: #0d0d0d; */
+  color: whitesmoke;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+p,
+a,
+img {
+  text-wrap: pretty;
+}
+
+a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+dialog {
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+img,
+button:focus {
+  user-select: none;
+}
