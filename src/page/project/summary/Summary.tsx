@@ -40,15 +40,6 @@ export default function Summary({}: PropSummary) {
           nueva estrategia
         </button>
       </div>
-      <div>
-        Número de objetivos creados vs. completados. Estado de las estrategias
-        generadas (e.g., "3 estrategias activas").
-      </div>
-      <div>
-        Gráfica básica o barras de progreso para: Avance de los objetivos (e.g.,
-        60% completados). Uso del presupuesto asignado (si lo agregas más
-        adelante).
-      </div>
     </div>
   )
 }
