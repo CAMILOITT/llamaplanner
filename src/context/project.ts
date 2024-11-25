@@ -1,24 +1,24 @@
-import { Project } from "@/feature/createProject/types"
-import { create } from "zustand"
+import { Project } from '@/feature/createProject/types';
+import { create } from 'zustand';
 
 interface State {
-  project: Project
-  setProject: (project: Project) => void
+  project: Project;
+  updateProject: (project: Project) => void;
 }
 
-export const useProjectStore = create<State>(set => ({
+export const useProjectStore = create<State>((set) => ({
   project: {
-    nameEnterprise: "",
-    description: "",
-    sectorIndustry: "",
-    location: "",
-    descriptionBrief: "",
-    values: "",
-    productsServices: "",
+    nameEnterprise: '',
+    description: '',
+    sectorIndustry: '',
+    location: '',
+    descriptionBrief: '',
+    values: '',
+    productsServices: '',
     competitors: [],
-    missionVisionBrief: "",
+    missionVisionBrief: '',
   },
-  setProject: (project: Project) => {
-    set({ project })
+  updateProject: (project: Project) => {
+    set({ project });
   },
-}))
+}));

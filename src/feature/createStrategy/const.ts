@@ -1,4 +1,4 @@
-import { SchemeResponseStrategy } from "./types"
+import { SchemeResponseStrategy, StatusProgressStrategy } from "./types"
 
 export const expectedFormat = `
 ### Formato de respuesta:
@@ -9,52 +9,56 @@ Devuelve un JSON en el siguiente formato, cumpliendo estrictamente con las sigui
 4. Las tareas deben ser realistas y relevantes para alcanzar el objetivo principal.
 5. Cada tarea dentro del campo schedule debe incluir un campo idea que contenga una lista de conceptos que expliquen o detallen cómo ejecutar la tarea. Este campo es obligatorio y debe ser coherente con el objetivo y las tácticas definidas.
 6. El nombre de la estrategia debe ser un nombre corto, claro y conciso, que refleje el objetivo principal y la audiencia objetivo.
+7. El status de cada tarea siempre va a ser no iniciado
+
 `
 
 export const exampleStrategy1: SchemeResponseStrategy = {
-  name: "Estrategia de lealtad",
-  main_objective: "Incrementar el número de clientes recurrentes",
+  name: 'Estrategia de lealtad',
+  main_objective: 'Incrementar el número de clientes recurrentes',
   audience: {
     segment:
-      "Jóvenes adultos (25-40 años), interesados en estilos de vida saludables",
-    localization: "Bogotá",
+      'Jóvenes adultos (25-40 años), interesados en estilos de vida saludables',
+    localization: 'Bogotá',
   },
   tactics: [
-    "Implementar un programa de lealtad con descuentos especiales",
-    "Crear un menú semanal exclusivo para miembros del programa",
+    'Implementar un programa de lealtad con descuentos especiales',
+    'Crear un menú semanal exclusivo para miembros del programa',
   ],
   kpis: [
-    "Incremento del 25% en el número de clientes recurrentes",
-    "Aumento del 15% en el valor promedio del ticket",
+    'Incremento del 25% en el número de clientes recurrentes',
+    'Aumento del 15% en el valor promedio del ticket',
   ],
-  budget: "1500 USD",
-  duration: "3 meses",
-  channels: ["Instagram", "Facebook"],
+  budget: '1500 USD',
+  duration: '3 meses',
+  channels: ['Instagram', 'Facebook'],
   schedule: {
     month_1: {
       week_1: [
         {
-          task: "Diseñar un programa de lealtad",
-          duration: "3 días",
+          task: 'Diseñar un programa de lealtad',
+          duration: '3 días',
           idea: [
-            "Ofrecer un descuento del 10% después de la quinta visita",
-            "Promocionar membresías exclusivas con beneficios",
+            'Ofrecer un descuento del 10% después de la quinta visita',
+            'Promocionar membresías exclusivas con beneficios',
           ],
+          status: { status: StatusProgressStrategy.NOT_STARTED},
         },
       ],
       week_2: [
         {
-          task: "Lanzar contenido promocional en Instagram",
-          duration: "2 días",
+          task: 'Lanzar contenido promocional en Instagram',
+          duration: '2 días',
           idea: [
-            "Publicar historias destacando clientes satisfechos",
-            "Mostrar platillos populares con etiquetas de sostenibilidad",
+            'Publicar historias destacando clientes satisfechos',
+            'Mostrar platillos populares con etiquetas de sostenibilidad',
           ],
+          status: { status: StatusProgressStrategy.NOT_STARTED},
         },
       ],
     },
   },
-}
+};
 
 export const exampleData1 = `
  ### Ejemplo 1: Información de la Empresa
@@ -89,42 +93,44 @@ Devuelve exclusivamente el JSON en este formato.
 `
 
 export const exampleStrategy2: SchemeResponseStrategy = {
-  name: "Estrategia para incrementar la adopcion de software entre pequeñas empresas",
-  main_objective: "Incrementar la adopción de software entre pequeñas empresas",
+  name: 'Estrategia para incrementar la adopcion de software entre pequeñas empresas',
+  main_objective: 'Incrementar la adopción de software entre pequeñas empresas',
   audience: {
-    segment: "Propietarios de pequeñas empresas (10-50 empleados)",
-    localization: "Latinoamérica",
+    segment: 'Propietarios de pequeñas empresas (10-50 empleados)',
+    localization: 'Latinoamérica',
   },
   tactics: [
-    "Realizar webinars gratuitos sobre automatización empresarial",
-    "Desarrollar estudios de caso locales para generar confianza",
+    'Realizar webinars gratuitos sobre automatización empresarial',
+    'Desarrollar estudios de caso locales para generar confianza',
   ],
   kpis: [
-    "Aumento del 30% en las pruebas gratuitas del ERP",
-    "Incremento del 20% en la conversión de pruebas a suscripciones",
+    'Aumento del 30% en las pruebas gratuitas del ERP',
+    'Incremento del 20% en la conversión de pruebas a suscripciones',
   ],
-  budget: "5000 USD",
-  duration: "6 meses",
-  channels: ["LinkedIn", "YouTube", "Sitio web"],
+  budget: '5000 USD',
+  duration: '6 meses',
+  channels: ['LinkedIn', 'YouTube', 'Sitio web'],
   schedule: {
     month_1: {
       week_1: [
         {
-          task: "Planificar contenido para LinkedIn",
-          duration: "2 días",
-          idea: ["Crear publicaciones educativas sobre automatización"],
+          task: 'Planificar contenido para LinkedIn',
+          duration: '2 días',
+          idea: ['Crear publicaciones educativas sobre automatización'],
+          status: { status: StatusProgressStrategy.NOT_STARTED },
         },
       ],
       week_2: [
         {
-          task: "Lanzar primer webinar gratuito",
-          duration: "1 día",
-          idea: ["Invitar a dueños de empresas locales a participar"],
+          task: 'Lanzar primer webinar gratuito',
+          duration: '1 día',
+          idea: ['Invitar a dueños de empresas locales a participar'],
+          status: { status: StatusProgressStrategy.NOT_STARTED },
         },
       ],
     },
   },
-}
+};
 
 export const exampleData2 = `
  ### Ejemplo 2: Información de la Empresa

@@ -15,7 +15,7 @@ function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-      <Route element={<ProtectedRouter />}>
+      {/* <Route element={<ProtectedRouter />}> */}
         <Route path="/" element={<Home />} />
         <Route path="project" element={<Project />}>
           <Route index element={<Summary />} />
@@ -26,7 +26,7 @@ function App() {
           </Route>
           <Route path="config" element={<Configuration />} />
         </Route>
-      </Route>
+      {/* </Route> */}
     </Routes>
   );
 }

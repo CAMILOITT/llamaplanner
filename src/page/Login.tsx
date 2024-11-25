@@ -1,19 +1,20 @@
-import { signInWithGoogle } from "@/services/firebase/auth"
-import { saveUserData } from "@/services/firebase/db/user"
-import { useNavigate } from "react-router"
+import { signInWithGoogle } from '@/services/firebase/auth';
+import { saveUserData } from '@/services/firebase/db/user';
+import { useNavigate } from 'react-router';
 
 interface PropLogin {}
 
 export default function Login({}: PropLogin) {
-  const navigator = useNavigate()
+  const navigator = useNavigate();
 
   async function login() {
     try {
-      await signInWithGoogle()
-      await saveUserData()
-      navigator("/")
-    } catch (error) {
-      console.log(error)
+      await signInWithGoogle();
+      await saveUserData();
+      navigator('/');
+    } catch (e) {
+      const error = (e as Error).message;
+      alert(error);
     }
   }
 
@@ -24,10 +25,10 @@ export default function Login({}: PropLogin) {
         <p className="">Por favor ingrese sus credenciales</p>
         <div className="flex justify-center ">
           <button onClick={login} className="btn btn-primary">
-            Iniciar sesión
+            Iniciar sesión con Google
           </button>
         </div>
       </div>
     </main>
-  )
+  );
 }

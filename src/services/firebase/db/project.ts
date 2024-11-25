@@ -15,8 +15,8 @@ export async function saveUserProject(projectData: Project) {
   const user = auth.currentUser
 
   if (user) {
-    const projectsRef = collection(db, "users", user.uid, "projects") // Subcolección
-    await addDoc(projectsRef, projectData)
+    const projectsRef = collection(db, "users", user.uid, "projects") 
+     return await addDoc(projectsRef, projectData)
   }
 }
 
